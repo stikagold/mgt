@@ -1,0 +1,22 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?query=$1 [L,QSA]
+
+
+#RewriteEngine on
+#
+#RewriteCond %{REQUEST_URI}  .+(gif|png|jpg)$
+#RewriteRule .* - [L]
+#
+#RewriteCond %{REQUEST_URI}  .+(css|png)$
+#RewriteRule .* - [L]
+#
+#RewriteCond %{REQUEST_URI}  .+css$
+#RewriteRule .* - [L]
+#
+#RewriteCond %{REQUEST_URI}  .+(js|htm)$
+#RewriteRule .* - [L]
+#
+#RewriteRule ^(.*)$ index.php?query=$1 [L,QSA]
