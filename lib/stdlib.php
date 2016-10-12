@@ -35,5 +35,6 @@ function megatrade_autoload($class_name){
     }
 }
 
+
 spl_autoload_register("megatrade_autoload", false, true);
 
