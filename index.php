@@ -10,22 +10,17 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 require_once 'init.php';
-use \socket\CSocket;
-$socket = "";
-try{
-    $args = [
-        'address'=>"mt.local",
-        'protocol'=>CSocket::SOCKET_TCP,
-        'type'=>CSocket::SOCKET_SERVER
-    ];
 
-    $socket = new CSocket($args);
-    if($socket->initialSocket())
-        echo "Socket server was create<br>";
-    echo $socket;
+try{
+    echo "<pre><h3>Starting application...</h3>";
+    $app = new \std\CApp();
+    $app->Initial();
+//    $home = new CControllerHome();
 }
 catch (SocketExceptions $e){
     echo $e->getMessage();
     echo "<hr>";
-    echo $socket;
+}
+catch (SystemException $e){
+    echo $e->getMessage();
 }

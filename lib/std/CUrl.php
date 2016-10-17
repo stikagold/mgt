@@ -22,19 +22,21 @@ class CUrl
     public function __construct(){
         $this->domain = $_SERVER['SERVER_NAME'];
         $this->url_unparsed = $_SERVER['REQUEST_URI'];
-        $tmp = explode('/',$_SERVER['REQUEST_URI']);
-        foreach ($tmp as $url_part){
-            if(empty($url_part))
-                continue;
-            $as_array = explode('&',$url_part);
-            if(count($as_array)>1){
-                foreach ($as_array as $arg_partition){
-                    $arg_part = explode('=', $arg_partition);
-                    $this->arguments[$arg_part[0]] = $arg_part[1];
+        $full_array = explode('/',$_SERVER['REQUEST_URI']);
+        foreach ($full_array as $item) {
+            if(stripos($item, '=')){
+                $arg_list = explode('&', $item);
+                foreach ($arg_list as $arg) {
+                    $one_arg = explode('=', $arg);
+                    $this->arguments[$one_arg[0]] = $one_arg[1];
                 }
             }
-            else $this->controllers[] = $url_part;
+            else{
+                if($item)
+                    $this->controllers[] = $item;
+            }
         }
+
         if(empty($this->controllers))
             $this->controllers[] = 'home';
     }
@@ -42,8 +44,7 @@ class CUrl
     public function __toString(){
         $url = $this->domain;
         foreach ($this->controllers as $controller)
-            $url.='/'.$controller;
-        $url.='/';
+            $url.=$controller.'/';
         foreach ($this->arguments as $arg_key=>$arg_value){
             $url.=$arg_key.'='.$arg_value.'&';
         }
@@ -63,6 +64,12 @@ class CUrl
 
     public function getDomain(){
         return $this->domain;
+    }
+
+    public function getFirstController(){
+        if(empty($this->controllers))
+            return $this->controllers[0];
+        return "home";
     }
 
 }
