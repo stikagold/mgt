@@ -11,7 +11,7 @@ define("ROOT_DIR", __DIR__.'/../');
 define("EXCEPTIONS", ROOT_DIR.'exceptions/');
 define("CONFIG_DIR", ROOT_DIR.'config/');
 define("CONTROLLERS_DIR", LIB_DIR."../controllers/");
-require_once(FULL_DIR.'exseptindex.php');
+require_once(EXCEPTIONS.'index.php');
 
 function megatrade_autoload($class_name){
     $valid_url = str_replace('\\', '/', $class_name).'.php';
