@@ -10,7 +10,8 @@ class CController404 extends \std\CController{
 
     public function __construct(\std\CUrl $url)
     {
-        echo "Try do anything as 404<br>";
+        $this->__internall_name = 404;
+//        echo "Try do anything as 404<br>";
 //        parent::__construct($url);
     }
 }

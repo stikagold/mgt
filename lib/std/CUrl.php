@@ -67,7 +67,7 @@ class CUrl
     }
 
     public function getFirstController(){
-        if(empty($this->controllers))
+        if(!empty($this->controllers))
             return $this->controllers[0];
         return "home";
     }
