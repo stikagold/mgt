@@ -58,4 +58,16 @@ class CApp{
     public function renderPage(){
         static::$controller->renderPage();
     }
+
+    public function addCssLinks(){
+        $css = static::$controller->getCSS();
+        foreach ($css as $links)
+            echo $links, "\n";
+    }
+
+    public function addJsLinks(){
+        $css = static::$controller->getJS();
+        foreach ($css as $links)
+            echo $links, "\n";
+    }
 }

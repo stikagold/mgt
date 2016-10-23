@@ -7,3 +7,5 @@
  */
 //echo "In init.php\n";
 require_once 'lib/stdlib.php';
+$app = new \std\CApp();
+$app->Initial();

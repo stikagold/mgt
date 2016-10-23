@@ -19,12 +19,38 @@ define("CSS_DIRS", ASSETS.'css/');
 define("RES_DIRS", ASSETS.'images/');
 define("FONT_DIRS", ASSETS.'font/');
 
+define("ASSETS_WEB", 'http://megatrade.local/public/');
+define("VENDOR_WEB", 'http://megatrade.local/public/');
 class CController{
     protected $__datas = [];
     protected $__url = null;
     protected $__internall_name = 'layouts';
-    protected $__assetsJS = [];
-    protected $__assetsCSS = [];
+
+    protected $css = [
+        '<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />',
+        '<link rel="stylesheet" href="'.VENDOR_WEB.'vendor/bootstrap/css/bootstrap.min.css">',
+        '<link rel="stylesheet" href="'.VENDOR_WEB.'vendor/fontawesome/css/font-awesome.min.css">',
+        '<link rel="stylesheet" href="'.VENDOR_WEB.'vendor/themify-icons/themify-icons.min.css">',
+        '<link href="'.VENDOR_WEB.'vendor/animate.css/animate.min.css" rel="stylesheet" media="screen">',
+        '<link href="'.VENDOR_WEB.'vendor/perfect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet" media="screen">',
+        '<link href="'.VENDOR_WEB.'vendor/switchery/switchery.min.css" rel="stylesheet" media="screen">',
+        '<link rel="stylesheet" href="'.ASSETS_WEB.'assets/css/styles.css">',
+        '<link rel="stylesheet" href="'.ASSETS_WEB.'assets/css/plugins.css">',
+        '<link rel="stylesheet" href="'.ASSETS_WEB.'assets/css/themes/theme-1.css" id="skin_color" />',
+    ];
+
+    protected $js = [
+        '<script src="'.VENDOR_WEB.'vendor/jquery/jquery.min.js"></script>',
+        '<script src="'.VENDOR_WEB.'vendor/bootstrap/js/bootstrap.min.js"></script>',
+        '<script src="'.VENDOR_WEB.'vendor/modernizr/modernizr.js"></script>',
+        '<script src="'.VENDOR_WEB.'vendor/jquery-cookie/jquery.cookie.js"></script>',
+        '<script src="'.VENDOR_WEB.'vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>',
+        '<script src="'.VENDOR_WEB.'vendor/switchery/switchery.min.js"></script>',
+
+    ];
+
+    protected $childs_css = [];
+    protected $childs_js = [];
 
     public function __construct(CUrl $url){
         if(!$url)
@@ -38,11 +64,13 @@ class CController{
         else require_once PUBLIC_ZONE.'templates/'.$this->__internall_name.'/index.php';
     }
 
-    public function getCSS(){
-        return $this->__assetsCSS;
+    public function getCSS()
+    {
+        return array_merge($this->css, $this->childs_css);
     }
 
-    public function getJS(){
-        return $this->__assetsJS;
+    public function getJS()
+    {
+        return array_merge($this->js, $this->childs_js);
     }
 }

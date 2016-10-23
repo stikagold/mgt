@@ -10,10 +10,6 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 require_once 'init.php';
-define("ASSETS_WEB", 'http://megatrade.local/public/');
-define("VENDOR_WEB", 'http://megatrade.local/public/');
-
-use std;
 ?>
 <!DOCTYPE html>
 <!-- Template Name: Clip-Two - Responsive Admin Template build with Twitter Bootstrap 3.x | Author: ClipTheme -->
@@ -34,64 +30,25 @@ use std;
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta content="" name="description" />
     <meta content="" name="author" />
-    <!-- end: META -->
-    <!-- start: GOOGLE FONTS -->
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
-    <!-- end: GOOGLE FONTS -->
-    <!-- start: MAIN CSS -->
-    <link rel="stylesheet" href="<?= VENDOR_WEB ?>vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= VENDOR_WEB ?>vendor/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?= VENDOR_WEB ?>vendor/themify-icons/themify-icons.min.css">
-    <link href="<?= VENDOR_WEB ?>vendor/animate.css/animate.min.css" rel="stylesheet" media="screen">
-    <link href="<?= VENDOR_WEB ?>vendor/perfect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet" media="screen">
-    <link href="<?= VENDOR_WEB ?>vendor/switchery/switchery.min.css" rel="stylesheet" media="screen">
-    <!-- end: MAIN CSS -->
-    <!-- start: CLIP-TWO CSS -->
-    <link rel="stylesheet" href="<?= ASSETS_WEB ?>assets/css/styles.css">
-    <link rel="stylesheet" href="<?= ASSETS_WEB ?>assets/css/plugins.css">
-    <link rel="stylesheet" href="<?= ASSETS_WEB ?>assets/css/themes/theme-1.css" id="skin_color" />
-    <!-- end: CLIP-TWO CSS -->
-    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+    <?php
+        echo "<!-- Starting autocomplate of css links for this page only -->\n";
+        $app->addCssLinks();
+    ?>
 </head>
+<body>
 <?php
-try{
-//    echo "<pre><h3>Starting application...</h3>";
-    $app = new \std\CApp();
-    $app->Initial();
     $app->renderPage();
-//    $home = new CControllerHome();
-}
-catch (SocketExceptions $e){
-    echo $e->getMessage();
-    echo "<hr>";
-}
-catch (SystemException $e){
-    echo $e->getMessage();
-}
-
 ?>
 
-<!-- start: MAIN JAVASCRIPTS -->
-<script src="<?= VENDOR_WEB ?>vendor/jquery/jquery.min.js"></script>
-<script src="<?= VENDOR_WEB ?>vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?= VENDOR_WEB ?>vendor/modernizr/modernizr.js"></script>
-<script src="<?= VENDOR_WEB ?>vendor/jquery-cookie/jquery.cookie.js"></script>
-<script src="<?= VENDOR_WEB ?>vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script src="<?= VENDOR_WEB ?>vendor/switchery/switchery.min.js"></script>
-<!-- end: MAIN JAVASCRIPTS -->
-<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<!-- start: CLIP-TWO JAVASCRIPTS -->
-<script src="<?= ASSETS_WEB ?>assets/js/main.js"></script>
-<!-- start: JavaScript Event Handlers for this page -->
+<!-- Starting connect js files for this page only -->
+<?php
+    $app->addJsLinks();
+?>
 <script>
     jQuery(document).ready(function() {
         Main.init();
     });
 </script>
-<!-- end: JavaScript Event Handlers for this page -->
-<!-- end: CLIP-TWO JAVASCRIPTS -->
 </body>
-<!-- end: BODY -->
+
 </html>

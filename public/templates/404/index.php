@@ -1,7 +1,4 @@
 
-<!-- end: HEAD -->
-<!-- start: BODY -->
-<body>
 <!-- start: 404 -->
 <div class="error-full-page">
     <div class="container">
@@ -19,23 +16,7 @@
                         <br>
                         Check the URL you entered for any mistakes and try again.
                         <br>
-                        <a href="index.html" class="btn btn-red btn-return">
-                            Return home
-                        </a>
-                        <br>
-                        Still no luck?
-                        <br>
-                        Search for whatever is missing, or take a look around the rest of our site.
                     </p>
-                    <form action="#">
-                        <div class="input-group">
-                            <input type="text" placeholder="keyword..." size="16" class="form-control">
-									<span class="input-group-btn">
-										<button class="btn btn-azure">
-											Search
-										</button> </span>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
